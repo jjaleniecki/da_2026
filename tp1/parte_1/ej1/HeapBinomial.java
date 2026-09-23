@@ -128,4 +128,24 @@ public class HeapBinomial {
             curr = curr.getHermanoDer();
         }
     }
+
+    public NodoBinomial buscarMin() {
+        //busca solo en las raices pq siempre son mínimos de su arbol
+        //es de orden O(log n) pq hay a lo sumo O(log n) arboles en la lista de raices
+        if (head == null) {
+            return null;
+        }
+
+        NodoBinomial min = head;
+        NodoBinomial actual = head.getHermanoDer();
+
+        while (actual != null) {
+            if (actual.getClave() < min.getClave()) {
+                min = actual;
+            }
+            actual = actual.getHermanoDer();
+        }
+
+        return min;
+    }
 }
