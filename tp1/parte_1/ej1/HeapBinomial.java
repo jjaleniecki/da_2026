@@ -18,6 +18,10 @@ public class HeapBinomial {
         this.head = head;
     }
 
+    public int getCount(){
+        return this.count;
+    }
+
     public boolean is_empty(){
         return head==null;
     }

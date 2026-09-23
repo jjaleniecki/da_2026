@@ -22,6 +22,10 @@ public class NodoBinomial {
         return this.clave;
     }
 
+    public NodoBinomial getPadre(){
+        return this.padre;
+    }
+
     public NodoBinomial getHermanoDer(){
         return this.hermanoDer;
     }
