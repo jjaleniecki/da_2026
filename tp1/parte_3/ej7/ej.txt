@@ -1,0 +1,5 @@
+El inciso 1, 2 y 3 son posibles, se ven en la foto.
+
+El inciso 4: Grafo con ciclo que incluye todos los vértices, pero sin ser Hamiltoniano ni Euleriano.
+No es posible, por definición si un grafo tiene un ciclo que incluye todos los vértices entonces 
+será obligatoriamente un circuito Hamiltoniano (ya que arranca y termina en el mismo nodo)
