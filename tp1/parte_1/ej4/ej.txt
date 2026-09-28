@@ -1,0 +1,19 @@
+4 a) 
+Para el calculo de analisis amortizado si se agrega la función de decrementar contemplamos el peor caso 
+en el cual cada numero de la secuencia debe modificar su valor siendo k la cantidad de digitos del numero binario y n la cantidad de operaciones
+tita(n) = tita(n*k) ya que las n operaciones modifican los k digitos del numero
+ 
+4 b)
+Como hay 2 casos debo calcular el costo para dichos casos:
+	costo(i) = i si i es potencia de 2  (ultimas 2 sumatorias)
+	costo(i) 1 para otro caso   (primer sumatoria)
+    T(n) = sumatoria desde i=1 hasta n de (costo(i)) =  sumatoria desde i=1 hasta n de (1) - sumatoria desde k=0 hasta log base 2 de n de(1) + sumatoria 
+ desde k=0 hasta log base 2 de n de (2^k)   
+
+    T(n) = n - ((log base 2 de n) +1)+2 ^(|log2n|+1)-1
+		T(n) <= n - (log base 2 de n)+1 +2 . 2^(log base 2 de n) -1
+		T(n) <= 3n - log base 2 de n  -2
+Simplificando queda T(n) =3n 
+
+Para calcular el costo amortizado utilizamos la formula del metodo agregado: 
+metodo agregado T(n)/n = 3n/n = 3  por cada operación

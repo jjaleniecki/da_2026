@@ -1,0 +1,57 @@
+Inserción y eliminación de vertices
+
+Matriz de adyacencia
+Inserción: al agregar un vertice, es necesario aumentar la matriz de n×n a (n+1)×(n+1),
+esto implica reservar una nueva estructura y copiar los datos existentes.
+Complejidad: O(n^2).
+Desventaja: insertar vertices resulta costoso, cuando el grafo crece frecuentemente.
+Ventaja: una vez actualizado el tamaño, consultar las conexiones sigue siendo eficiente.
+
+Eliminación: se debe eliminar la fila y la columna correspondientes al vértice, ya que representan todos sus arcos entrantes y salientes.
+Complejidad: O(n^2).
+Desventaja: hay que desplazar o copiar elementos de la matriz.
+
+Lista de adyacencia
+Inserción: basta con agregar un nuevo vertice y crear su lista de adyacencia vacia.
+Complejidad: O(1) amortizado, si se utiliza una estructura adecuada.
+Ventaja: la inserción es sencilla y no requiere modificar las listas de los demas vertices.
+
+Eliminación: se elimina el vertice y todos los arcos incidentes con el.
+Complejidad: O(n+m) en una implementación general, porque puede ser necesario recorrer las listas de los demas vértices para eliminar
+las referencias al vertice borrado.
+Ventaja: no es necesario reconstruir toda una matriz.
+Desventaja: eliminar un vertice puede requerir recorrer muchas listas.
+
+Inserción y eliminación de arcos
+Matriz de adyacencia
+Para insertar o eliminar un arco (u,v), simplemente se modifica la celda A[u][v].
+Inserción: O(1).
+Eliminación: O(1).
+Ventaja: ambas operaciones son muy eficientes, ya que se accede directamente a la posición de la matriz.
+Desventaja: se reserva espacio para todas las posibles conexiones, aunque la mayoría no existan.
+
+Lista de adyacencia
+Para insertar un arco (u,v), se agrega v a la lista de adyacencia de u.
+Inserción: O(1), si se inserta al principio de una lista enlazada o se mantiene una referencia al final.
+Eliminación: O(n(u)), donde n(u) es el numero de aristas o arcos que parten del vertice u. 
+Ventaja: se almacena unicamente el arco que existe, por lo que se utiliza menos memoria.
+Desventaja: eliminar un arco requiere buscarlo en la lista, salvo que se utilice una estructura auxiliar que permita localizarlo directamente.
+
+Recorridos: BFS y DFS
+
+Matriz de adyacencia
+Para encontrar los vecinos de un vertice u, se debe recorrer toda la fila A[u], comprobando las n posibles conexiones.
+Por lo tanto:
+BFS: O(n^2)
+DFS: O(n^2)
+Esto se debe a que para cada vertice visitado, se examinan hasta n posiciones de la matriz.
+Ventaja: comprobar si existe un arco entre dos vertices es inmediato, en O(1).
+Desventaja: incluso si un vertice tiene muy pocos vecinos, hay que revisar toda su fila.
+
+Lista de adyacencia
+Para encontrar los vecinos de un vertice, se recorre unicamente su lista de adyacencia.
+BFS: O(n+m)
+DFS: O(n+m)
+Cada vertice se visita como máximo una vez y cada arco se examina una cantidad constante de veces.
+Ventaja: los recorridos son mas eficientes en grafos dispersos, donde la cantidad de arcos es mucho menor que n^2.
+Desventaja: comprobar directamente si existe un arco entre dos vertices puede requerir recorrer una lista.
