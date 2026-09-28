@@ -152,4 +152,12 @@ public class HeapBinomial {
 
         return min;
     }
+
+    public NodoBinomial extraerMin(){
+        NodoBinomial temp = new NodoBinomial(1);
+
+        
+
+        return temp;
+    }
 }
