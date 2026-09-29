@@ -24,6 +24,20 @@ public class OrdenamientoPorConteo{
         for(i = 0; i < length; i++){
             ord[cont[i]] = arr[i];
         }
+        /*
+        ej: input 'C' 'a' 'B'
+        1: C <= a = false => cont[0]++ osea el contador asociado a C
+        2: C <= B = false => cont[0]++ 
+        3: a < B = true => cont[2]++ osea el contador asociado a B
+
+        el for final acomoda
+        ord[cont[0]] = arr[0] osea ord[2] = C
+        ord[cont[1]] = arr[1] osea ord[0] = a
+        ord[cont[2]] = arr[2] osea ord[1] = B
+        
+        ord final = {a, B, C}
+        
+        */
         return ord;
     }
 }

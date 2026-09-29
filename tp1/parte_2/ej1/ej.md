@@ -15,7 +15,6 @@ Coloquialmente, esto significa que, en caso de que 2 elementos sean iguales, el 
 ### En el arreglo resultante debe figurar cada letra en el mismo modo que en el arreglo original
 
 ```java
-que aura tiene hacer las cosas en md
 public class OrdenamientoPorConteo{
 
     public static char[] ordenarConteo(char[] arr) {
