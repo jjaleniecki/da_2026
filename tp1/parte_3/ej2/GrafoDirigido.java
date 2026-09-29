@@ -1,4 +1,4 @@
-package tp1.parte_3.ej1;
+package tp1.parte_3.ej2;
 
 import java.util.*;
 

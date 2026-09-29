@@ -1,0 +1,48 @@
+Cota inferior (bound)
+
+
+Para un nodo parcial:
+LB = costo ya asignado + suma, para cada agente sin asignar, de su menor costo entre las tareas aun libres
+Es una cota optimista porque ignora que dos agentes podrían querer la misma tarea. Nunca sobreestima el costo real, asi
+que podar con ella es seguro. La cota superior es el costo de la mejor solución completa encontrada hasta el momento (incumbente).
+
+Raiz: min(A)=15, min(B)=21, min(C)=19, por lo tanto LB=55
+                         RAÍZ (LB = 55)
+              ┌──────────────┼───────────────┐
+         A→t1 (25)      A→t2 (18)       A→t3 (15)
+          LB = 65        LB = 68          LB = 55
+                                              │
+                                   ┌──────────┴──────────┐
+                                B→t2 (21)             B→t1 (28)
+                                LB = 58               LB = 62
+                                   │
+                                C→t1 (22)
+                              COSTO = 58  ✔
+
+Calculo de las cotas
+
+Nivel 1 (asignar A):
+A→t1: 25 + B(min entre t2,t3 = 21) + C(min entre t2,t3 = 19) = 65
+A→t2: 18 + B(min entre t1,t3 = 28) + C(min entre t1,t3 = 22) = 68
+A→t3: 15 + B(min entre t1,t2 = 21) + C(min entre t1,t2 = 19) = 55
+
+Nivel 2 (expandir A→t3, el nodo de menor cota):
+B→t2: 15 + 21 + C(solo queda t1 = 22) = 58, solución completa
+B→t1: 15 + 28 + C(solo queda t2 = 19) = 62, solución completa
+
+Poda
+Se expande primero A→t3 porque tiene la menor cota (55). Es una estrategia best-first.
+Al llegar a B→t2→C→t1 se obtiene la primera solución completa, con costo 58. Ese valor pasa a ser la cota superior.
+Toda rama cuya LB sea >= 58 se poda, porque ni en el mejor caso puede mejorar el incumbente:
+A→t1 (LB 65) queda podada, sin explorar sus hijos.
+A→t2 (LB 68) queda podada, sin explorar sus hijos.
+B→t1 (LB 62) queda podada.
+
+Como no queda ningun nodo abierto con LB < 58, el incumbente es optimo.
+
+Resultado
+Asignación optima: A→t3, B→t2, C→t1, con costo total 58 (15+21+22)
+
+Se visitaron 7 nodos en lugar de los 10 del arbol completo (1 + 3 + 6 hojas), y no fue necesario desarrollar las ramas A→t1 y A→t2
+que habrian generado 4 hojas mas.
+Verificación por fuerza bruta (las 6 permutaciones): 69, 74, 69, 70, 62 y 58, asi que el minimo coincide.

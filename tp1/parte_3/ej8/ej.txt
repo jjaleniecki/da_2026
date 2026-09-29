@@ -1,0 +1,25 @@
+Idea del algoritmo
+1- Empezar con flujo 0.
+2- Buscar un camino de aumento S→T en el grafo residual (arcos con capacidad residual > 0).
+3- Enviar el cuello de botella (mínima residual del camino) y actualizar residuales. 
+Los arcos usados bajan su residual y aparecen arcos inversos que permiten "deshacer" flujo.
+4- Repetir hasta que no exista camino. El flujo resultante es máximo.
+
+Después de la iteración 4, desde S solo se alcanza B (S→B tiene residual 1 pero B→D quedó en 0 y B no tiene otra salida)
+ No hay mas caminos, asi que el flujo maximo es 19
+Flujo por arco: S→A 10, S→B 9, A→C 4, A→D 6, A→B 0, B→D 9, D→C 5, D→T 10, C→T 9
+Se verifica la conservación en cada nodo interno (por ejemplo, en D entran 6+9 = 15 y salen 10+5 = 15)
+
+Arco critico: B→D
+B→D está saturado (9/9) y pertenece al corte minimo. Es un cuello de botella por lo que aumentar su capacidad puede aumentar el flujo.
+
+Si aumentamos B→D de 9 a 10 (o a cualquier valor mayor). Partimos del flujo anterior y buscamos un nuevo camino de aumento:
+#	Camino	    Cuello de botella	Flujo total
+5	S→B→D→C→T	min(1,1,1,1) = 1	20
+Ahora S→B y S→A están saturados y el flujo 20 coincide con la capacidad total de salida de S y con la de entrada a T (C→T + D→T = 20)
+por lo cual no puede crecer mas.
+Comparación
+	            B→D=9	        B→D=10 (o mas)
+Flujo maximo	19	            20
+Corte minimo	{S→A,B→D}=19	{S→A,S→B}=20
+Arco critico	B→D	            ninguno de los internos

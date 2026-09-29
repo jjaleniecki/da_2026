@@ -1,0 +1,43 @@
+El algoritmo consta del siguiente procedimiento
+
+
+// Probar todas las columnas de la fila actual
+    Para columna desde 1 hasta N Hacer
+        Si Es_Posicion_Segura(fila, columna) Entonces
+            // MARCAR: Colocar la dama y ocupar las lineas
+            tablero[fila] ← columna
+            columnas[columna] ← Verdadero
+            diagonales_principales[fila - columna] ← Verdadero
+            diagonales_secundarias[fila + columna] ← Verdadero
+
+            // Llamada recursiva para la siguiente fila
+            Resolver_N_Damas(fila + 1, N)
+
+            // DESMARCAR (Backtracking): Quitar la dama para probar otras opciones
+            columnas[columna] ← Falso
+            diagonales_principales[fila - columna] ← Falso
+            diagonales_secundarias[fila + columna] ← Falso
+        Fin Si
+    Fin Para
+Fin Función
+
+Función Es_Posicion_Segura(fila, columna)
+    // 1. Verificar si la columna ya esta ocupada
+    Si columnas[columna] es Verdadero Entonces
+        Devolver Falso
+    Fin Si
+
+    // 2. Verificar la diagonal principal (\)
+    Si diagonales_principales[fila - columna] es Verdadero Entonces
+        Devolver Falso
+    Fin Si
+
+    // 3. Verificar la diagonal secundaria (/)
+    Si diagonales_secundarias[fila + columna] es Verdadero Entonces
+        Devolver Falso
+    Fin Si
+
+    // Si pasó todas las pruebas, la posición es segura
+    Devolver Verdadero
+Fin Función
+
