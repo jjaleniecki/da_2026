@@ -4,14 +4,14 @@ public class Main {
     public static void main(String[] args) {
         Trie arbolin = new Trie();
 
-        arbolin.agregarPalabra("valulu");
-        arbolin.agregarPalabra("vals");
+        arbolin.agregarPalabra("juego");
+        arbolin.agregarPalabra("jugo");
         arbolin.agregarPalabra("vino");
-        arbolin.agregarPalabra("val");
+        arbolin.agregarPalabra("vintage");
 
         //arbolin.imprimirEstructura();
 
-        arbolin.agregarSinonimo("valulu", "linda");
+        arbolin.agregarSinonimo("juego", "jogo");
         arbolin.agregarSinonimo("vino", "rico");
         arbolin.imprimirEstructura();
 
