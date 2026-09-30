@@ -9,7 +9,7 @@ public class Trie {
     }
 
     public Nodo agregarPalabra(String word){
-        //analisis de eficiencia: O(n*26)? porque por cada letra de longitud vas a tener maximo 
+        //analisis de eficiencia: O(n)
         //posibilidades (el tamaño del alfabeto)
         Nodo actual = root;
         
@@ -36,7 +36,6 @@ public class Trie {
     }
 
     public void agregarSinonimo(String palabra, String sinonimo){
-        //mismo orden que agregarPalabra pq lo uso como busqueda jejej
         palabra = palabra.toLowerCase();
         sinonimo = sinonimo.toLowerCase();
 
@@ -69,7 +68,6 @@ public class Trie {
 
     public LinkedList<String> obtenerSinonimos(String palabra){
         //obtengo el nodo de la palabra
-        //analisis de eficiencia: mismo que agregarpalabra jejj
         Nodo nPalabra = agregarPalabra(palabra);
         return nPalabra.getSinonimos();
     }

@@ -2,7 +2,7 @@
 1. Mejor caso
 2. Peor caso
 
-El algoritmo Boyer Moore Horspool (o Horspool solito) se usa para encontrar un patrón en un texto. Funciona creando previamente una tablita (Bad Match Table) la cual contiene para cada letra del patrón un valor.
+El algoritmo Boyer Moore Horspool (o simplemente Horspool) se usa para encontrar un patrón en un texto. Funciona creando previamente una tablita (Bad Match Table) la cual contiene para cada letra del patrón un valor.
 
 El valor se calcula como: value = length - index - 1
 La última letra = length si no fue definida
@@ -29,10 +29,3 @@ haphipiph
      piph
 match !! ding ding ding
 
-ahora que veo el enunciado dice m <= n? osea el patrón siendo más grande o igual que el texto?
-si fuera ese caso
-a. que la primer comparación de falso ya te asegura que el algoritmo frena y es O(1)
-b. que la ultima comparación de falso ya que recorres todo el texto y es O(n) 
-esto sería asumiendo n = m, porque si m < n entonces siempre retorna falso porque siempre el patrón es más grande y nunca lo vas a encontrar como substring de un texto más pequeño jej
-
-y si no es un typo bueno 
