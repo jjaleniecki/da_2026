@@ -1,0 +1,13 @@
+Preguntas:
+1. ¿Cuál es la complejidad temporal del enfoque?
+La complejidad del algoritmo fuerza bruta es O(n * n!), ya que para hay n! permutaciones y cada una se
+valida en tiempo n (ya que se debe recorrer cada permutacion completa).
+
+2. ¿Cómo cambiaría si se aplicara una poda temprana (backtracking)?
+En caso de aplicar poda temprana, la cantidad de nodos a chequear disminuye, ya que se descartan ramas
+apenas aparecen 2 vocales seguidas y no se generan permutaciones completas invalidas. Sin embargo, en el
+peor caso la complejidad sigue siendo de O(n!) ya que la mayoría de permutaciones son validas y hay que
+verificarlas
+
+3. ¿Por qué este enfoque es una aplicación de fuerza bruta?
+Porque explora todas las posibles soluciones candidatas, sin descartar ninguna de antemano.
