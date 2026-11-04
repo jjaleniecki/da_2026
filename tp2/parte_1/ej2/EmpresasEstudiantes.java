@@ -3,7 +3,6 @@ import java.util.*;
 
 public class EmpresasEstudiantes {
 
-  
     // Devuelve match[p] = r. Imprime la traza si trace == true.
     static int[] galeShapley(int[][] prefP, int[][] prefR, String[] nameP, String[] nameR, boolean trace) {
         int n = prefP.length;

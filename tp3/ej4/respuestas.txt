@@ -1,0 +1,22 @@
+b) Transforma y vencerás tiene tres variantes: simplificar la instancia, cambiar la representación y reducir 
+a otro problema. La FFT es un caso de cambio de representación, y una reducción NP es un caso de reducción 
+de problema.
+
+FFT: cambio de representación
+
+Se aplica a la multiplicación de polinomios (que es una convolución). Con los coeficientes, multiplicar 
+dos polinomios de grado n cuesta O(n²), porque cada coeficiente de uno se multiplica por cada coeficiente 
+del otro.
+La idea es cambiar la representación del polinomio:
+    1. Transformar: pasar de coeficientes a valores, evaluando A y B en N puntos. Con la FFT, esos puntos 
+    son las raíces N-ésimas de la unidad, donde N es una potencia de 2 mayor que el grado del producto.
+    2. Resolver en el dominio fácil: en la representación por valores, multiplicar es punto a 
+    punto: C(ωᵏ) = A(ωᵏ) · B(ωᵏ). Cuesta O(N).
+    3. Transformar de vuelta: la FFT inversa (con ω⁻¹ y dividiendo por N) recupera los coeficientes de C.
+
+1. La versión simple (resultado *= a, n veces) hace n − 1 multiplicaciones, o sea Θ(n). La exponenciación 
+rápida hace entre log₂ n y 2·log₂ n multiplicaciones, o sea Θ(log n).
+La ganancia es exponencial respecto de la cantidad de bits de n: si duplicás el tamaño de n, la versión 
+simple duplica el trabajo y la rápida suma una sola multiplicación.
+
+2. No entiendo la pregunta, averiguar a que "tecnica" se refiere

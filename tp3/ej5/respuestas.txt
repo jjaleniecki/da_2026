@@ -1,0 +1,19 @@
+1. Mostrar la secuencia de monedas elegidas.
+La secuencia de monedas elegidas es: 10->5->2->1, ya que siempre elige la moneda más grande que
+entre en el monto restante, recorriendo las restantes de mayor a menor.
+
+2. ¿Es la solución óptima?
+No siempre, ya que con algunos conjuntos de monedas puede fallar. Por ejemplo, {1,3,4} y monto 6,
+el algoritmo elige las monedas 4->1->1 pero la solución óptima sería 3->3.
+
+3. Probar con monedas {1, 3, 4} y explicar por qué el método falla o no.
+Con ese conjunto se elige: 4->4->4->4->1->1 (asumiendo que se pueden repetir monedas)
+En caso de que no se puedan repetir monedas, el algoritmo falla ya que la suma de todos los elementos
+es menor al monto dado.
+
+4. Explicar qué propiedad del problema determina la correctitud del enfoque.
+Para determinar la correctitud del enfoque (osea de usar greedy) se desean 2 propiedades en el problema:
+    1. Subestructura óptima: La solución optima al problema general contiene dentro las soluciones
+    optimas a sus subproblemas.
+    2. Propiedad de elección greedy: Podemos ensamblar la solución global haciendo elecciones
+    óptimas locales.

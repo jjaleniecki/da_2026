@@ -1,0 +1,41 @@
+Resolver el problema de la mochila 0/1 mediante Programación Dinámica.
+Objetos:
+    ● A(Valor=60, Peso=10)
+    ● B(Valor=100, Peso=20)
+    ● C(Valor=120, Peso=30)
+    ● Capacidad = 50.
+
+1. Construir la tabla de DP y mostrar cómo se llena.
+SEa dp[i][w] el mayor valor usando los primeros i objetos con capacidad w:
+
+i \ w	            0	10	20	30	40	50
+0 (sin objetos)	    0	0	0	0	0	0
+1 (A)	            0	60	60	60	60	60
+2 (A, B)	        0	60	100	160	160	160
+3 (A, B, C)	        0	60	100	160	180	220
+
+Se llena usando la recurrencia
+Fila 1: (peso 10, valor 60)
+    w = 0, no entra
+    w >= 10: 60 (el caso de la recurrencia cuando TOMA)
+Fila 2: (peso 20, valor 100)
+    w = 10, no entra
+    w = 20: 100 (el valor de tomar B es mayor que el de tomar A)
+    w >= 30: 160 (toma ambos)
+Fila 3: (peso 30, valor 120)
+    w = 10, no entra: 60
+    w = 20, no entra: 100
+    w = 30: 160 (toma A+B antes que C solo)
+    w = 40: 180 (toma A+C antes que A+B)
+    w = 50: 220 (toma B+C)
+
+2. ¿Cuál es el valor máximo alcanzable?
+El valor máximo alcanzable es 220
+
+3. Indicar qué objetos se incluyen en la solución.
+Se incluye B+C
+
+4. Explicar la diferencia con una versión Greedy.
+Una versión greedy hubiera realizado la elección basandose en su criterio local, por lo que hubiera
+ordenado A B y C por valor/peso. En este caso tomaría A y B, y como C ya no entra (porque tiene peso 30
+y A+B suman peso 30 osea que se desborda) se quedaría con la elección de A+B la cual es subóptima.
