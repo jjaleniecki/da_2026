@@ -1,0 +1,57 @@
+Aplicar el algoritmo de Kruskal para obtener el árbol de cubrimiento mínimo del siguiente grafo:
+Vertices: A, B, C, D, E
+Aristas (peso): A-B(1), B-C(2), A-C(3), B-D(4), C-D(5), C-E(6), D-E(7)
+
+1. Mostrar el orden en que se agregan las aristas (Kruskal).
+Se ordenan las aristas en orden creciente por peso y se va tomando la arista de menor 
+peso, luego verificamos si forma un ciclo con el árbol de expansión actual: si no lo 
+forma, se incluye la arista al total, y si forma ciclo se descarta.
+- A-B(1): no forma ciclo, se incluye.
+- B-C(2): no forma ciclo, se incluye
+- A-C(3): forma ciclo (por A-B y B-C), se descarta
+- B-D(4): no forma ciclo, se incluye
+- C-D(5): forma ciclo (por B-C Y B-D), se descarta
+- C-E(6): no forma ciclo, se incluye
+
+El algoritmo finaliza cuando se tienen V-1 aristas en el árbol de expansión. Como ya agregamos
+4 aristas (son 5 vértices) finaliza, y las aristas incluidas son:
+{A-B, B-C, B-D, C-E}
+
+2. Dibujar o describir el árbol final y su peso total.
+El árbol final es la imagen "grafo_ej6" y su peso total es de 1+2+4+6 = 13
+
+3. Resolver el mismo problema con Prim y comparar los resultados.
+Para aplicar el algoritmo de Prim primero se selecciona un nodo arbitrario, y se
+va seleccionando la arista que esté en la frontera y que tenga menor costo que 
+no genere ciclo desde ese nodo.
+
+En este caso elijo "A" como nodo inicial.
+Aristas frontera: A-B(1), A-C(3).
+Elijo la arista con menor costo, osea A-B(1). R = {A-B}
+Aristas frontera: A-C(3), B-C(2), B-D(4).
+Elijo la arista con menor costo, osea B-C(2). R = {A-B, B-C}
+Aristas frontera: A-C(3), B-D(4), C-D(5), C-E(6).
+La arista con menor costo es A-C(3), pero genera ciclo entonces se descarta.
+Aristas frontera: B-D(4), C-D(5), C-E(6).
+Elijo la arista con menor costo, osea B-D(4). R = {A-B, B-C, B-D}
+Aristas frontera: C-D(5), C-E(6).
+La arista con menor costo es C-D(5), pero genera ciclo entonces se descarta.
+Aristas frontera: C-E(6).
+Elijo la arista con menor costo, osea C-E(6). R = {A-B, B-C, B-D, C-E}
+Aristas frontera: vacio
+Finaliza el algoritmo!
+Peso total: 1+2+4+6 = 13
+
+4. Explicar por qué Dijkstra no obtiene el mismo árbol, aunque también use una
+estrategia voraz.
+El algoritmo de Dijkstra no obtiene el mismo árbol debido a que este algoritmo busca
+optimizar las distancias desde el origen, no optimiza el peso total del grafo, por
+lo que su criterio voraz se enfoca en las distancias acumuladas y no en los pesos
+locales de cada arista.
+
+5. Analizar la complejidad temporal de cada algoritmo
+ - Kruskal: O(m · log m)
+ - Prim: depende de la implementación, pero con matriz de adyacencia es O(V²) y 
+ con lista de adyacencia es O((V +E) log V).
+ - Dijkstra: también depende de la implementación, pero con una implementación simple
+ con array es O(V²) y con una priority queue es O((V + E) log V)
